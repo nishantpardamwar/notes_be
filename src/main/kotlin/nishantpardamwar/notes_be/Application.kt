@@ -50,13 +50,15 @@ fun Application.module() {
 
     startKoin {
         modules(
-            module { single<MongoClient> { MongoClient.create(mongoDBUri) } },
-            module { single<AuthDBService> { AuthDBServiceImpl(get()) } },
-            module { single<NoteDBService> { NoteDBServiceImpl(get()) } },
-            module { single<EncoderService> { EncoderServiceImpl() } },
-            module { single<NoteService> { NoteService(get()) } },
-            module { single<AuthService> { AuthServiceImpl(get(), get(), get()) } },
-            module { single<JWTService> { JWTService() } }
+            module {
+                single<MongoClient> { MongoClient.create(mongoDBUri) }
+                single<AuthDBService> { AuthDBServiceImpl(get()) }
+                single<NoteDBService> { NoteDBServiceImpl(get()) }
+                single<EncoderService> { EncoderServiceImpl() }
+                single<NoteService> { NoteService(get()) }
+                single<AuthService> { AuthServiceImpl(get(), get(), get()) }
+                single<JWTService> { JWTService() }
+            }
         )
     }
 
